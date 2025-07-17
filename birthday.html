@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Samara!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav>
+  <a href="home.html" class="nav-link">← Back to Home</a>
+</nav>
+
+<div class="container">
+  <h1>Happy Birthday, Samara! 🌻💜</h1>
+  <p class="message">Wishing you a magical day straight out of a storybook — with purple skies, sunflowers, and all my love.</p>
+  <button onclick="showSurprise()">Click for a Surprise 🎁</button>
+
+  <div id="surprise" class="hidden">
+    <img src="Coraline.jpg" alt="Birthday Surprise" class="coraline" />
+    <p class="surprise-text">You're the sunshine in my dark garden — like a sunflower under the Coraline moon. 🌻</p>
+
+    <div id="poem" class="poem-section">
+      <h2>A Poem for You, Samara 🌻</h2>
+      <p class="poem-line">On the other side of a little blue door,</p>
+      <p class="poem-line">Lies the girl I wandered this world for.</p>
+      <p class="poem-line">Not stitched in buttons, not sewn in thread,</p>
+      <p class="poem-line">But carved in stars above my bed.</p>
+      <p class="poem-line">You, with sunflower eyes and Coraline fire,</p>
+      <p class="poem-line">Spoke in storms and soft desire.</p>
+      <p class="poem-line">In midnight purple, your laughter grew,</p>
+      <p class="poem-line">Like a cat that only ever came to you.</p>
+      <p class="poem-line">Brave like Wybie, wild and sweet,</p>
+      <p class="poem-line">Even shadows curled at your feet.</p>
+      <p class="poem-line">You stitched the seams of days gone wrong,</p>
+      <p class="poem-line">And turned each silence into song.</p>
+      <p class="poem-line">Now twenty suns have kissed your sky,</p>
+      <p class="poem-line">But still, you glow, my reasons why.</p>
+      <p class="poem-line">If love’s a door, then let it be,</p>
+      <p class="poem-line">Locked forever, you and me. 🖤</p>
+    </div>
+
+    <div class="surprise-container">
+      <button class="surprise-trigger" onclick="showAudioSurprise()">🎁 Click Me</button>
+    </div>
+
+    <div id="audio-modal" class="audio-modal hidden">
+      <div class="audio-modal-content">
+        <h2>💜 A Birthday Message Just for You</h2>
+
+        <audio id="birthdayAudio" src="happy_birthday.mp3"></audio>
+
+        <div class="timestamp">
+          <span id="currentTime">0:00</span>
+          <input type="range" id="audioProgress" value="0" min="0" step="1" />
+          <span id="duration">0:00</span>
+        </div>
+
+        <div class="audio-controls">
+          <button class="audio-button" onclick="document.getElementById('birthdayAudio').play()">▶️ Play</button>
+          <button class="audio-button" onclick="document.getElementById('birthdayAudio').pause()">⏸️ Pause</button>
+        </div>
+
+        <button class="close-audio" onclick="hideAudioSurprise()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showSurprise() {
+  document.getElementById("surprise").classList.remove("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("birthdayAudio");
+  const progress = document.getElementById("audioProgress");
+  const currentTime = document.getElementById("currentTime");
+  const duration = document.getElementById("duration");
+
+  audio.addEventListener("loadedmetadata", () => {
+    progress.max = Math.floor(audio.duration);
+    duration.textContent = formatTime(audio.duration);
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    progress.value = Math.floor(audio.currentTime);
+    currentTime.textContent = formatTime(audio.currentTime);
+  });
+
+  progress.addEventListener("input", () => {
+    audio.currentTime = progress.value;
+  });
+
+  function formatTime(sec) {
+    const minutes = Math.floor(sec / 60);
+    const seconds = Math.floor(sec % 60).toString().padStart(2, '0');
+    return `${minutes}:${seconds}`;
+  }
+});
+
+function showAudioSurprise() {
+  const modal = document.getElementById("audio-modal");
+  const audio = document.getElementById("birthdayAudio");
+  modal.classList.remove("hidden");
+  if (audio.readyState >= 2) {
+    audio.play();
+  } else {
+    audio.addEventListener("loadedmetadata", () => {
+      audio.play();
+    }, { once: true });
+  }
+}
+
+function hideAudioSurprise() {
+  const modal = document.getElementById("audio-modal");
+  const audio = document.getElementById("birthdayAudio");
+  const progress = document.getElementById("audioProgress");
+  modal.classList.add("hidden");
+  audio.pause();
+  audio.currentTime = 0;
+  progress.value = 0;
+  document.getElementById("currentTime").textContent = "0:00";
+}
+</script>
+</body>
+</html>

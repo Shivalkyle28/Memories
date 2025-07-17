@@ -1,0 +1,457 @@
+/*-----------------------------------
+  ✨ Base Styles
+-----------------------------------*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #3e0066, #6a0dad, #a770ef);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  color: #fbeaff;
+  overflow-x: hidden;
+  transition: background 1s ease-in-out, color 1s ease;
+}
+
+nav {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.nav-link {
+  color: #ffccff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/*-----------------------------------
+  📦 Container / Layout
+-----------------------------------*/
+.container {
+  max-width: 650px;
+  margin: 5vh auto;
+  background-color: rgba(30, 0, 60, 0.85);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: containerFade 1.5s forwards;
+}
+
+/*-----------------------------------
+  🎨 Headings and Text
+-----------------------------------*/
+h1 {
+  font-size: 2.8rem;
+  color: #ffd700;
+  text-shadow: 2px 2px #4b0082;
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.03);
+}
+
+.message {
+  font-size: 1.25rem;
+  margin: 1rem 0 2rem;
+  color: #e0c3fc;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1s;
+}
+
+/*-----------------------------------
+  🎁 Button Styles
+-----------------------------------*/
+button,
+.audio-button,
+.modal-content button {
+  background: linear-gradient(to right, #a770ef, #cf8bf3);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #bb86fc;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover,
+.audio-button:hover,
+.modal-content button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #cf8bf3, #a770ef);
+}
+
+/* Links as buttons */
+a.button-link {
+  display: inline-block;
+  margin-top: 2rem;
+  background: linear-gradient(to right, #a770ef, #cf8bf3);
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 10px #bb86fc;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+a.button-link:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #cf8bf3, #a770ef);
+}
+
+/*-----------------------------------
+  🎉 Surprise / coraline Section
+-----------------------------------*/
+#surprise {
+  margin-top: 2rem;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.coraline {
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transition: transform 0.4s ease;
+}
+
+.coraline:hover {
+  transform: rotate(-2deg) scale(1.03);
+}
+
+.surprise-text {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #ffe066;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 1s;
+}
+
+/*-----------------------------------
+  🌻 Floating Hearts (Sunflowers)
+-----------------------------------*/
+.floating-heart {
+  position: fixed;
+  top: -40px;
+  width: 28px;
+  height: 28px;
+  background-image: url('sunflower.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  animation: fall linear forwards, fadeIn 1s ease-in;
+}
+
+/*-----------------------------------
+  📸 Memory Gallery (Grid or Scattered)
+-----------------------------------*/
+.memory-photo {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.memory-photo:hover {
+  transform: scale(1.02);
+}
+
+.photo-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.photo-grid img {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+/* Scattered layout */
+.scattered-wall {
+  position: relative;
+  height: 900px;
+  width: 100%;
+  margin-top: 3rem;
+  overflow: visible;
+}
+
+.scattered {
+  position: absolute;
+  width: 160px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.scattered:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* Unique scatter positions */
+.photo-1 { top: 0; left: 5%; transform: rotate(-8deg); }
+.photo-2 { top: 80px; left: 35%; transform: rotate(4deg); }
+.photo-3 { top: 0; right: 5%; transform: rotate(-3deg); }
+.photo-4 { top: 250px; left: 10%; transform: rotate(6deg); }
+.photo-5 { top: 270px; right: 10%; transform: rotate(-5deg); }
+.photo-6 { top: 500px; left: 20%; transform: rotate(3deg); }
+.photo-7 { top: 480px; right: 20%; transform: rotate(-6deg); }
+.photo-8 { bottom: 0; left: 45%; transform: rotate(5deg); }
+
+/* Mobile fix for scattered layout */
+@media (max-width: 768px) {
+  .scattered-wall {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    position: static;
+  }
+  .scattered {
+    position: static;
+    transform: none !important;
+  }
+}
+
+/*-----------------------------------
+  🔍 Lightbox
+-----------------------------------*/
+#lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 0, 40, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+#close-btn {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*-----------------------------------
+  📝 Poem Section
+-----------------------------------*/
+.poem-line {
+  font-style: italic;
+  color: #e0c3fc;
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: revealLine 0.6s forwards;
+}
+
+/* Add delay per line */
+.poem-line:nth-child(n+2) { animation-delay: calc(0.3s * (var(--i, 1))); }
+
+/*-----------------------------------
+  🔐 Password Modal + Key + Hint
+-----------------------------------*/
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(30, 0, 60, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #3e0066, #6a0dad);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px #ffd700aa;
+  max-width: 400px;
+  color: #fbeaff;
+}
+
+.modal-content input {
+  background-color: #2a003f;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  padding: 0.6rem;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.key-icon {
+  font-size: 2.5rem;
+  animation: keyFloat 2s infinite ease-in-out;
+}
+
+@keyframes keyFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px) rotate(-5deg); }
+  100% { transform: translateY(0); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+#hint-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffd700;
+  border: 1px solid #bb86fc;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#hint-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/*-----------------------------------
+  🔄 Animations
+-----------------------------------*/
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes containerFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes revealLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#audioProgress {
+  width: 100%;
+  margin: 1rem 0;
+  accent-color: #ffd700;
+  background: transparent;
+  height: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.home-button {
+  display: inline-block;
+  margin-top: 2rem;
+  background: linear-gradient(to right, #4b0082, #a770ef);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+  text-shadow: 1px 1px #000;
+}
+
+.home-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #6a0dad, #cf8bf3);
+}
+.home-button, .nav-link {
+  background: linear-gradient(to right, #6a0dad, #a770ef);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 0 12px #bb86fc;
+  display: inline-block;
+  margin: 1rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.home-button:hover, .nav-link:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #a770ef, #cf8bf3);
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our First Photo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Password Modal -->
+  <div id="password-modal" class="modal">
+    <div class="modal-content" id="modal-box">
+      <div class="key-icon">🗝️</div>
+      <h2>🕷️ Welcome to a Hidden Memory</h2>
+      <p>Enter the secret password to unlock this page.</p>
+      <input type="password" id="password-input" placeholder="Password..." />
+      <button onclick="checkPassword()">Unlock</button>
+    </div>
+    <button id="hint-button">💡 Hint</button>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="hidden">
+    <span id="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Expanded Memory" />
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Our First Photo Together 📸</h1>
+    <p class="message">This was the beginning of something unforgettable — your smile, my heartbeat.</p>
+    <img src="first-photo.jpg" alt="Our First Photo" class="memory-photo" />
+    <p class="surprise-text">We had no idea what the future held, but I knew from that moment — you were someone special. 💜</p>
+
+    <div class="scattered-wall">
+      <img src="memory1.jpg" class="scattered photo-1" />
+      <img src="memory2.jpg" class="scattered photo-2" />
+      <img src="memory3.jpg" class="scattered photo-3" />
+      <img src="memory4.jpg" class="scattered photo-4" />
+      <img src="memory5.jpg" class="scattered photo-5" />
+      <img src="memory6.jpg" class="scattered photo-6" />
+      <img src="memory7.jpg" class="scattered photo-7" />
+      <img src="memory8.jpg" class="scattered photo-8" />
+    </div>
+  </div>
+
+  <!-- JS Scripts (placed at the bottom for safety) -->
+  <script>
+    const allowed = sessionStorage.getItem("memories_access_granted");
+    const modal = document.getElementById("password-modal");
+
+    if (!allowed) {
+      modal.style.display = "flex";
+    }
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const modalBox = document.getElementById("modal-box");
+
+      if (input.toLowerCase() === "samara20") {
+        sessionStorage.setItem("memories_access_granted", "true");
+        modal.style.display = "none";
+      } else {
+        modalBox.classList.add("shake");
+        setTimeout(() => modalBox.classList.remove("shake"), 500);
+        alert("Wrong... and the Other Mother is watching. 👁️");
+      }
+    }
+
+    document.getElementById("hint-button").addEventListener("click", () => {
+      alert("... Gotta work for it princess :)");
+    });
+  </script>
+
+</body>
+</html>
