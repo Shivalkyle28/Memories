@@ -355,9 +355,7 @@ a.button-link:hover {
 }
 
 #hint-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  margin-top: 1rem;
   background: rgba(255, 255, 255, 0.07);
   color: #ffd700;
   border: 1px solid #bb86fc;
@@ -371,7 +369,6 @@ a.button-link:hover {
 #hint-button:hover {
   background: rgba(255, 255, 255, 0.15);
 }
-
 /*-----------------------------------
   🔄 Animations
 -----------------------------------*/
