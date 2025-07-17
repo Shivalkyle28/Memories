@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Password Modal -->
+
+  <!-- 🔐 Password Modal -->
   <div id="password-modal" class="modal">
     <div class="modal-content" id="modal-box">
       <div class="key-icon">🗝️</div>
@@ -19,33 +20,41 @@
     <button id="hint-button">💡 Hint</button>
   </div>
 
-  <!-- Lightbox Overlay -->
+  <!-- 🔍 Lightbox Viewer -->
   <div id="lightbox" class="hidden">
     <span id="close-btn">&times;</span>
     <img id="lightbox-img" src="" alt="Expanded Memory" />
   </div>
 
-  <!-- Main Content -->
+  <!-- 🔙 Navigation -->
+  <nav>
+    <a href="home.html" class="nav-link">← Back to Home</a>
+  </nav>
+
+  <!-- 📸 Main Content -->
   <div class="container">
     <h1>Our First Photo Together 📸</h1>
     <p class="message">This was the beginning of something unforgettable — your smile, my heartbeat.</p>
+
     <img src="first-photo.jpg" alt="Our First Photo" class="memory-photo" />
+
     <p class="surprise-text">We had no idea what the future held, but I knew from that moment — you were someone special. 💜</p>
 
     <div class="scattered-wall">
-      <img src="memory1.jpg" class="scattered photo-1" />
-      <img src="memory2.jpg" class="scattered photo-2" />
-      <img src="memory3.jpg" class="scattered photo-3" />
-      <img src="memory4.jpg" class="scattered photo-4" />
-      <img src="memory5.jpg" class="scattered photo-5" />
-      <img src="memory6.jpg" class="scattered photo-6" />
-      <img src="memory7.jpg" class="scattered photo-7" />
-      <img src="memory8.jpg" class="scattered photo-8" />
+      <img src="memory1.jpg" alt="Memory 1" class="scattered photo-1" />
+      <img src="memory2.jpg" alt="Memory 2" class="scattered photo-2" />
+      <img src="memory3.jpg" alt="Memory 3" class="scattered photo-3" />
+      <img src="memory4.jpg" alt="Memory 4" class="scattered photo-4" />
+      <img src="memory5.jpg" alt="Memory 5" class="scattered photo-5" />
+      <img src="memory6.jpg" alt="Memory 6" class="scattered photo-6" />
+      <img src="memory7.jpg" alt="Memory 7" class="scattered photo-7" />
+      <img src="memory8.jpg" alt="Memory 8" class="scattered photo-8" />
     </div>
   </div>
 
-  <!-- JS Scripts (placed at the bottom for safety) -->
+  <!-- 💻 JavaScript -->
   <script>
+    // Password Check
     const allowed = sessionStorage.getItem("memories_access_granted");
     const modal = document.getElementById("password-modal");
 
@@ -67,10 +76,28 @@
       }
     }
 
+    // Hint Button
     document.getElementById("hint-button").addEventListener("click", () => {
       alert("... Gotta work for it princess :)");
     });
-  </script>
 
+    // Lightbox functionality
+    const scatteredImages = document.querySelectorAll('.scattered');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close-btn');
+
+    scatteredImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.remove('hidden');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    });
+  </script>
 </body>
 </html>
